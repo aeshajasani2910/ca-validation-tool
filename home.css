@@ -1,0 +1,766 @@
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+    background:#f8faff;
+    color:#1e293b;
+
+}
+
+
+
+
+
+.navbar{
+
+    background:rgba(37,99,235,0.95);
+
+    padding:15px 0;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+
+}
+
+
+
+.navbar-brand{
+
+    color:white !important;
+
+    font-size:25px;
+
+    font-weight:700;
+
+}
+
+
+.navbar-brand i{
+
+    font-size:30px;
+
+    margin-right:8px;
+
+}
+
+
+
+.nav-link{
+
+    color:white !important;
+
+    font-size:16px;
+
+    margin-left:25px;
+
+    transition:.3s;
+
+}
+
+
+
+.nav-link:hover{
+
+    color:#bfdbfe !important;
+
+}
+
+
+
+
+
+
+
+.hero{
+
+    min-height:700px;
+
+    padding-top:120px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #1e40af
+    );
+
+    color:white;
+
+}
+
+
+
+.hero h1{
+
+    font-size:55px;
+
+    font-weight:800;
+
+    line-height:1.2;
+
+}
+
+
+
+.hero h1 span{
+
+    color:#bfdbfe;
+
+}
+
+
+
+.hero p{
+
+    font-size:20px;
+
+    margin-top:25px;
+
+    margin-bottom:35px;
+
+    color:#e0e7ff;
+
+}
+
+
+
+.start-btn{
+
+
+    background:white;
+
+    color:#2563eb;
+
+    border:none;
+
+    padding:14px 35px;
+
+    border-radius:30px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+
+
+.start-btn:hover{
+
+    transform:scale(1.08);
+
+    background:#dbeafe;
+
+}
+
+
+
+
+
+
+.dashboard-box{
+
+
+    background:
+
+    rgba(255,255,255,0.15);
+
+
+    backdrop-filter:blur(15px);
+
+
+    padding:35px;
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+
+    0 20px 40px rgba(0,0,0,0.2);
+
+
+    animation:float 3s infinite;
+
+
+}
+
+
+
+.dashboard-box h4{
+
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.mini-card{
+
+
+    background:white;
+
+
+    color:#1e40af;
+
+
+    padding:18px;
+
+
+    border-radius:15px;
+
+
+    margin-bottom:15px;
+
+
+    font-weight:600;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+}
+
+
+
+
+.mini-card span{
+
+
+    color:green;
+
+    font-size:22px;
+
+}
+
+
+
+
+
+
+.stats{
+
+    padding:50px 0;
+
+    background:white;
+
+}
+
+
+
+.stats h2{
+
+
+    font-size:45px;
+
+    color:#2563eb;
+
+    font-weight:800;
+
+}
+
+
+
+.stats p{
+
+    color:#64748b;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+
+
+.services{
+
+
+    padding:70px 0;
+
+}
+
+
+
+.services h2,
+
+
+.works h2{
+
+
+    text-align:center;
+
+    font-size:38px;
+
+    font-weight:800;
+
+    color:#1e3a8a;
+
+    margin-bottom:40px;
+
+
+}
+
+
+
+
+.service-card{
+
+
+    background:white;
+
+
+    padding:35px;
+
+
+    text-align:center;
+
+
+    border-radius:20px;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,0.08);
+
+
+    transition:.4s;
+
+
+}
+
+
+
+
+.service-card:hover{
+
+
+    transform:translateY(-12px);
+
+
+    box-shadow:
+
+    0 20px 35px rgba(37,99,235,0.25);
+
+
+}
+
+
+
+.service-card i{
+
+
+    font-size:45px;
+
+
+    color:#2563eb;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.service-card h4{
+
+
+    font-weight:700;
+
+    color:#1e40af;
+
+}
+
+
+
+
+
+
+
+.works{
+
+
+    background:#eff6ff;
+
+    padding:60px 0;
+
+    text-align:center;
+
+}
+
+
+
+.works h3{
+
+
+    width:70px;
+
+    height:70px;
+
+
+    margin:auto;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:50%;
+
+
+    background:#2563eb;
+
+
+    color:white;
+
+
+    font-size:30px;
+
+
+}
+
+
+
+
+.works p{
+
+    margin-top:15px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+
+
+
+footer{
+
+
+    background:#111827;
+
+
+    color:white;
+
+
+    padding:20px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+
+@keyframes float{
+
+
+0%{
+
+transform:translateY(0);
+
+}
+
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+
+100%{
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+
+/*Responsive*/
+
+
+@media(max-width:768px){
+
+
+.hero{
+
+    text-align:center;
+
+}
+
+
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+
+.dashboard-box{
+
+    margin-top:40px;
+
+}
+
+
+.nav-link{
+
+    margin-left:0;
+
+}
+
+
+}
+
+/* Features */
+
+
+.features{
+
+padding:70px 0;
+
+background:white;
+
+}
+
+
+
+.feature-card{
+
+background:#f8fafc;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:20px;
+
+height:100%;
+
+transition:.3s;
+
+}
+
+
+
+.feature-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 15px 30px rgba(0,0,0,0.1);
+
+}
+
+
+
+.feature-card i{
+
+font-size:45px;
+
+color:#2563eb;
+
+margin-bottom:20px;
+
+}
+
+
+
+.feature-card h4{
+
+color:#1e40af;
+
+font-weight:700;
+
+}
+
+footer{
+
+background:#0f172a;
+
+color:white;
+
+padding:35px;
+
+text-align:center;
+
+}
+
+
+footer h5{
+
+font-size:25px;
+
+font-weight:700;
+
+}
+
+
+footer p{
+
+color:#cbd5e1;
+
+}
+
+/* =====================================================
+   HOME PAGE RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 991px) {
+
+    .hero {
+        min-height: auto;
+        padding: 90px 0 70px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .dashboard-box {
+        margin-top: 40px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 70px 15px 50px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+        line-height: 1.25;
+    }
+
+    .hero p {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .start-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .dashboard-box {
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .mini-card {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .stats {
+        padding: 35px 15px;
+    }
+
+    .stats h2 {
+        font-size: 34px;
+    }
+
+    .stats p {
+        font-size: 15px;
+    }
+
+    .services {
+        padding: 45px 15px;
+    }
+
+    .services h2,
+    .works h2 {
+        font-size: 28px;
+    }
+
+    .service-card,
+    .feature-card {
+        padding: 25px 18px;
+        margin-bottom: 18px;
+    }
+
+    .works {
+        padding: 45px 15px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .navbar-brand {
+        font-size: 19px;
+    }
+
+    .navbar-brand i {
+        font-size: 22px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .dashboard-box {
+        padding: 18px;
+    }
+
+    .mini-card {
+        font-size: 13px;
+    }
+
+    .service-card i,
+    .feature-card i {
+        font-size: 38px;
+    }
+
+    .service-card h4,
+    .feature-card h4 {
+        font-size: 18px;
+    }
+
+    footer {
+        padding: 25px 15px;
+    }
+
+}

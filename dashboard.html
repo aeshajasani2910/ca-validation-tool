@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CA Validation Tool</title>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+   
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <script>
+
+if(localStorage.getItem("isLoggedIn")!="true"){
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+  
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+         
+
+            <div class="col-lg-3 p-0">
+
+                <div class="sidebar">
+
+                    
+
+                    <div class="logo">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <h2>CA Validation Tool</h2>
+
+                        <p>Validate Indian Documents Easily</p>
+
+                    </div>
+
+                    
+
+                    <ul class="nav flex-column menu">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="bi bi-grid-fill"></i>
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="bi bi-person-vcard"></i>
+                                PAN Validation
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="bi bi-bank"></i>
+                                TAN Validation
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="bi bi-credit-card-2-front"></i>
+                                Aadhaar
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="bi bi-receipt"></i>
+                                GSTIN
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="bi bi-phone"></i>
+                                Mobile
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="bi bi-envelope"></i>
+                                Email
+                            </a>
+                        </li>
+
+                       
+
+                    </ul>
+
+                    <div class="sidebar-profile">
+                        <div class="sidebar-profile-avatar" id="sidebarProfileAvatar">A</div>
+                        <div class="sidebar-profile-info">
+                            <h6 id="sidebarProfileName">User</h6>
+                            <small id="sidebarProfileEmail">user@example.com</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="col-lg-9">
+
+                <div class="main-content">
+
+                   
+
+                    <div class="top-bar">
+
+    <div>
+
+        <h2>Dashboard</h2>
+
+        <p>
+
+            Validate PAN, TAN, Aadhaar, GSTIN,
+            Mobile & Email
+
+        </p>
+
+    </div>
+
+    <div class="d-flex gap-2">
+
+        <button
+            class="btn btn-outline-dark"
+            id="darkModeBtn">
+
+            <i class="bi bi-moon-stars"></i>
+
+            Dark Mode
+
+        </button>
+
+        <button
+            class="btn btn-danger"
+            id="logoutBtn">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+                    
+
+                    <div class="welcome-card">
+
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-8">
+
+                                <h3 id="welcomeText">
+Welcome 👋
+</h3>
+
+                                <p>
+
+                                    One Platform to Validate PAN, TAN,
+                                    Aadhaar, GSTIN, Mobile Number and
+                                    Email. 
+                                </p>
+
+                                <button class="btn btn-primary">
+
+                                    Start Validation
+
+                                </button>
+
+                            </div>
+
+                            <div class="col-lg-4 text-center">
+
+                                <i class="bi bi-patch-check-fill display-1"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                  
+<div class="row mt-4 g-3">
+
+                        <div class="col-6 col-lg-3">
+                            <div class="card shadow border-0 rounded-4 p-3 h-100">
+                                <small class="text-muted">Total Validations</small>
+                                <h3 class="mb-0" id="totalCount">0</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-lg-3">
+                            <div class="card shadow border-0 rounded-4 p-3 h-100">
+                                <small class="text-muted">Valid</small>
+                                <h3 class="mb-0 text-success" id="validCount">0</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-lg-3">
+                            <div class="card shadow border-0 rounded-4 p-3 h-100">
+                                <small class="text-muted">Invalid</small>
+                                <h3 class="mb-0 text-danger" id="invalidCount">0</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-lg-3">
+                            <div class="card shadow border-0 rounded-4 p-3 h-100">
+                                <small class="text-muted">Today's Checks</small>
+                                <h3 class="mb-0" id="todayCount">0</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                       
+
+                    <div class="row mt-4">
+
+
+                        <div class="col-lg-7">
+
+                            <div class="card shadow border-0 rounded-4">
+
+                                <div class="card-body p-4">
+
+                                    <h4 class="mb-4">
+
+                                        <i class="bi bi-search"></i>
+
+                                        Document Validation
+
+                                    </h4>
+
+                                    <label class="form-label">
+
+                                        Select Validation Type
+
+                                    </label>
+
+                                    <select class="form-select mb-4" id="validationType">
+
+                                        <option value="">Choose Validation</option>
+
+                                        <option>PAN Card</option>
+
+                                        <option>TAN</option>
+
+                                        <option>Aadhaar</option>
+
+                                        <option>GSTIN</option>
+
+                                        <option>Mobile Number</option>
+
+                                        <option>Email Address</option>
+
+                                       
+
+                                    </select>
+
+                                    <label class="form-label">
+
+                                        Enter Value
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control form-control-lg"
+                                        id="inputValue"
+                                        placeholder="Enter PAN / GST / Aadhaar...">
+
+                                        
+<div id="captchaSection" style="display:none;" class="mt-3">
+
+    <button type="button" class="btn btn-outline-primary btn-sm" id="getCaptchaBtn">
+        <i class="bi bi-arrow-repeat"></i>
+        Get Captcha
+    </button>
+
+    <div class="mt-2">
+        <img id="captchaImg" src="" alt="" style="display:none; border:1px solid #ccc;">
+    </div>
+
+    <input
+        type="text"
+        class="form-control mt-2"
+        id="captchaInput"
+        placeholder="Enter Captcha shown above">
+
+    <input type="hidden" id="captchaCookie">
+
+</div>
+
+                                    <div class="mt-4 d-flex gap-2 flex-wrap">
+
+                                        <button
+                                            class="btn btn-primary"
+                                            id="validateBtn">
+
+                                            <i class="bi bi-check-circle"></i>
+
+                                            Validate
+
+                                        </button>
+
+                                        <button
+                                            class="btn btn-secondary"
+                                            id="clearBtn">
+
+                                            <i class="bi bi-x-circle"></i>
+
+                                            Clear
+
+                                        </button>
+
+                                       <button
+                                            class="btn btn-success"
+                                            id="copyBtn">
+
+                                            <i class="bi bi-clipboard"></i>
+
+                                            Copy
+
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-outline-primary"
+                                            id="scanQrBtn">
+
+                                            <i class="bi bi-qr-code-scan"></i>
+
+                                            Scan QR
+
+                                        </button>
+
+                                        
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                       
+
+                        <div class="col-lg-5">
+
+                            <div class="card shadow border-0 rounded-4">
+
+                                <div class="card-body p-4">
+
+                                    <h4>
+
+                                        <i class="bi bi-patch-check-fill"></i>
+
+                                        Validation Result
+
+                                    </h4>
+
+                                    <hr>
+
+                                    <div class="text-center mt-4">
+
+                                        <i
+                                            class="bi bi-shield-check display-1 text-primary">
+
+                                        </i>
+
+                                        <h3
+                                            class="mt-3"
+                                            id="resultStatus">
+
+                                            Waiting...
+
+                                        </h3>
+
+                                        <p
+                                            class="text-muted"
+                                            id="resultMessage">
+
+                                            Please enter any value and click Validate.
+
+                                        </p>
+
+                                    </div>
+
+                                    <div class="mt-4">
+
+                                        <table class="table">
+
+                                            <tr>
+
+                                                <th>Type</th>
+
+                                                <td id="showType">
+
+                                                    -
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+
+                                                <th>Input</th>
+
+                                                <td id="showInput">
+
+                                                    -
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+
+                                                <th>Status</th>
+
+                                                <td id="showStatus">
+
+                                                    -
+
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+
+                                    <div id="businessDetailsCard" class="business-card" style="display:none;">
+
+                                        <h6 class="business-card-title">
+                                            <i class="bi bi-building"></i>
+                                            Fetched Details
+                                        </h6>
+
+                                        <ul class="business-list" id="businessDetailsList">
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                                        
+
+                    <div class="row mt-4">
+
+                       
+
+                        <div class="col-lg-7">
+
+                            <div class="card shadow border-0 rounded-4" id="resultCard">
+
+                                <!-- <div class="card-body p-4">
+
+                                    <h4 class="mb-4">
+
+                                        <i class="bi bi-search"></i>
+
+                                        Document Validation
+
+                                    </h4>
+
+                                    <label class="form-label">
+
+                                        Select Validation Type
+
+                                    </label>
+
+                                    <select class="form-select mb-4" id="validationType">
+
+                                        <option value="">Choose Validation</option>
+
+                                        <option>PAN Card</option>
+
+                                        <option>TAN</option>
+
+                                        <option>Aadhaar</option>
+
+                                        <option>GSTIN</option>
+
+                                        <option>Mobile Number</option>
+
+                                        <option>Email Address</option>
+
+                                        <option>PIN Code</option>
+
+                                        <option>IFSC Code</option>
+
+                                    </select>
+
+                                    <label class="form-label">
+
+                                        Enter Value
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control form-control-lg"
+                                        id="inputValue"
+                                        placeholder="Enter PAN / GST / Aadhaar...">
+
+                                    <div class="mt-4 d-flex gap-2 flex-wrap">
+
+                                        <button
+                                            class="btn btn-primary"
+                                            id="validateBtn">
+
+                                            <i class="bi bi-check-circle"></i>
+
+                                            Validate
+
+                                        </button>
+
+                                        <button
+                                            class="btn btn-secondary"
+                                            id="clearBtn">
+
+                                            <i class="bi bi-x-circle"></i>
+
+                                            Clear
+
+                                        </button>
+
+                                        <button
+                                            class="btn btn-success"
+                                            id="copyBtn">
+
+                                            <i class="bi bi-clipboard"></i>
+
+                                            Copy
+
+                                        </button>
+
+                                    </div>
+
+                                </div> -->
+
+                            </div>
+
+                        </div>
+
+                       
+
+                        <div class="col-lg-5">
+
+                            <div class="card shadow border-0 rounded-4">
+
+                                <!-- <div class="card-body p-4">
+
+                                    <h4>
+
+                                        <i class="bi bi-patch-check-fill"></i>
+
+                                        Validation Result
+
+                                    </h4>
+
+                                    <hr>
+
+                                    <div class="text-center mt-4">
+
+                                        <i
+                                            class="bi bi-shield-check display-1 text-primary">
+
+                                        </i>
+
+                                        <h3
+                                            class="mt-3"
+                                            id="resultStatus">
+
+                                            Waiting...
+
+                                        </h3>
+
+                                        <p
+                                            class="text-muted"
+                                            id="resultMessage">
+
+                                            Please enter any value and click Validate.
+
+                                        </p>
+
+                                    </div>
+
+                                    <div class="mt-4">
+
+                                        <table class="table">
+
+                                            <tr>
+
+                                                <th>Type</th>
+
+                                                <td id="showType">
+
+                                                    -
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+
+                                                <th>Input</th>
+
+                                                <td id="showInput">
+
+                                                    -
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+
+                                                <th>Status</th>
+
+                                                <td id="showStatus">
+
+                                                    -
+
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+
+                                </div> -->
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                                   
+
+                        <div class="col-lg-5">
+
+                            <div class="card shadow border-0 rounded-4">
+
+                                
+                            </div>
+
+                        </div>
+
+                    </div>    
+
+                    <!-- Bulk TAN Validation Results -->
+<div
+    class="card shadow border-0 rounded-4 mt-4"
+    id="bulkTanResultCard"
+    style="display: none;">
+
+    <div class="card-body p-4">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+            <div>
+                <h4 class="mb-1">
+                    <i class="bi bi-file-earmark-check"></i>
+                    Bulk TAN Validation Results
+                </h4>
+
+                <p class="text-muted mb-0">
+                    Results received from TAN validation API
+                </p>
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap">
+
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    id="downloadTanCsvBtn">
+
+                    <i class="bi bi-file-earmark-spreadsheet"></i>
+                    Download CSV
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="downloadTanJsonBtn">
+
+                    <i class="bi bi-filetype-json"></i>
+                    Download JSON
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Summary -->
+        <div class="row g-3 mt-3">
+
+            <div class="col-md-4">
+
+                <div class="card border-0 bg-light p-3">
+
+                    <small class="text-muted">
+                        Total TAN
+                    </small>
+
+                    <h3
+                        class="mb-0"
+                        id="bulkTotalTan">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card border-0 bg-success-subtle p-3">
+
+                    <small class="text-success">
+                        Valid TAN
+                    </small>
+
+                    <h3
+                        class="mb-0 text-success"
+                        id="bulkValidTan">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card border-0 bg-danger-subtle p-3">
+
+                    <small class="text-danger">
+                        Invalid / Failed
+                    </small>
+
+                    <h3
+                        class="mb-0 text-danger"
+                        id="bulkInvalidTan">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Results Table -->
+        <div class="table-responsive mt-4">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>TAN</th>
+
+                        <th>Status</th>
+
+                        <th>Name</th>
+
+                        <th>PAN</th>
+
+                        <th>PAN Name</th>
+
+                        <th>Category</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="bulkTanResultTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Unified Bulk Validation -->
+<div class="card border-0 shadow-sm rounded-4 mt-4" id="bulkValidationCard">
+
+    <div class="card-body p-4">
+
+        <div class="d-flex align-items-center gap-3 mb-2">
+            <div>
+                <h4 class="mb-1">
+                    <i class="bi bi-file-earmark-spreadsheet"></i>
+                    Bulk Document Validation
+                </h4>
+
+                <p class="text-muted mb-0">
+                    Upload a CSV file and validate multiple documents automatically.
+                </p>
+            </div>
+        </div>
+
+        <label for="bulkValidationType" class="form-label fw-semibold mt-4">
+            Select Validation Type
+        </label>
+
+        <select class="form-select mb-3" id="bulkValidationType">
+
+            <option value="">Choose Validation</option>
+            <option value="PAN">PAN Card</option>
+            <option value="TAN">TAN</option>
+            <option value="Aadhaar">Aadhaar</option>
+            <option value="GSTIN">GSTIN</option>
+            <option value="Mobile">Mobile Number</option>
+            <option value="Email">Email Address</option>
+
+        </select>
+
+        <label for="bulkCsvFile" class="form-label fw-semibold">
+            Select CSV File
+        </label>
+
+        <input
+            type="file"
+            id="bulkCsvFile"
+            class="form-control mb-3"
+            accept=".csv">
+
+        <button
+            type="button"
+            class="btn btn-success"
+            id="uploadBulkCsvBtn">
+
+            <i class="bi bi-upload"></i>
+            Upload & Validate CSV
+
+        </button>
+
+        <div id="bulkCsvStatus" class="mt-3"></div>
+
+    </div>
+
+</div>
+
+<!-- Unified Bulk Validation Results -->
+<div class="card border-0 shadow-sm rounded-4 mt-4"
+     id="unifiedBulkResultCard"
+     style="display: none;">
+
+    <div class="card-body p-4">
+
+        <h4 class="mb-1">
+            <i class="bi bi-table"></i>
+            Bulk Validation Results
+        </h4>
+
+        <p class="text-muted mb-4">
+            Results of the selected bulk validation.
+        </p>
+
+        
+
+<div class="d-flex gap-2 mb-4 flex-wrap">
+
+    <!-- Download CSV -->
+    <button
+        type="button"
+        class="btn btn-success"
+        id="downloadUnifiedCsvBtn">
+
+        <i class="bi bi-filetype-csv"></i>
+        Download CSV
+
+    </button>
+
+
+    <!-- Download JSON -->
+    <button
+        type="button"
+        class="btn btn-primary"
+        id="downloadUnifiedJsonBtn">
+
+        <i class="bi bi-filetype-json"></i>
+        Download JSON
+
+    </button>
+
+
+    
+
+
+    <!-- Print -->
+    <button
+        type="button"
+        class="btn btn-outline-secondary"
+        id="printUnifiedBulkBtn">
+
+        <i class="bi bi-printer"></i>
+        Print Report
+
+    </button>
+
+</div>
+
+        <!-- Summary -->
+        <div class="row g-3 mb-4">
+
+            <div class="col-md-4">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <small class="text-muted">Total</small>
+                        <h3 id="unifiedBulkTotal" class="mb-0">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <small class="text-muted">Valid</small>
+                        <h3 id="unifiedBulkValid" class="mb-0">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <small class="text-muted">Invalid / Failed</small>
+                        <h3 id="unifiedBulkInvalid" class="mb-0">0</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Results Table -->
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-light">
+
+                    <tr>
+                        <th>#</th>
+                        <th>Type</th>
+                        <th>Document / Value</th>
+                        <th>Status</th>
+                       <th style="width: 220px;">Response</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="unifiedBulkResultTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bulk PAN Validation Results -->
+<div class="card border-0 shadow-sm rounded-4 mt-4" id="bulkPanResultCard" style="display: none;">
+
+    <div class="card-body p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h4 class="mb-1">
+                    <i class="bi bi-table"></i>
+                    Bulk PAN Validation Results
+                </h4>
+
+                <p class="text-muted mb-0">
+                    Results of all PAN numbers processed from the CSV file.
+                </p>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="row g-3 mb-4">
+
+            <div class="col-md-4">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <small class="text-muted">Total PAN</small>
+                        <h3 id="bulkTotalPan" class="mb-0">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <small class="text-muted">Valid PAN</small>
+                        <h3 id="bulkValidPan" class="mb-0">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <small class="text-muted">Invalid / Failed</small>
+                        <h3 id="bulkInvalidPan" class="mb-0">0</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Results Table -->
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>PAN</th>
+                        <th>Status</th>
+                        <th>API Response</th>
+                    </tr>
+                </thead>
+
+                <tbody id="bulkPanResultTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+                    <div class="card shadow border-0 rounded-4 mt-4" id="historyCard">
+
+                        <div class="card-body">
+
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                <h4>
+                                    <i class="bi bi-clock-history"></i>
+                                    Validation History
+                                </h4>
+
+                               <div class="history-actions">
+
+    <select id="printFilter" class="form-select" style="width:auto;">
+        <option value="All">All Records</option>
+        <option value="PAN Card">PAN Card Only</option>
+        <option value="TAN">TAN Only</option>
+        <option value="Aadhaar">Aadhaar Only</option>
+        <option value="GSTIN">GSTIN Only</option>
+        <option value="Mobile Number">Mobile Number Only</option>
+        <option value="Email Address">Email Only</option>
+        <option value="Valid">Valid Only</option>
+        <option value="Invalid">Invalid Only</option>
+    </select>
+
+    <input type="date" id="printDateFilter" class="form-control" style="width:auto;">
+    <button class="btn btn-success" id="exportBtn">
+        <i class="bi bi-file-earmark-excel"></i>
+        Export Excel
+    </button>
+
+    <button
+    type="button"
+    id="printReportBtn"
+    class="btn btn-primary"
+>
+    <i class="fas fa-print"></i>
+    Print Report
+</button>
+
+    <button class="btn btn-danger" id="clearHistory">
+        <i class="bi bi-trash"></i>
+        Clear History
+    </button>
+
+</div>
+                            </div>
+
+                            <div class="history-search">
+
+    <input
+        type="text"
+        id="searchHistory"
+        class="form-control"
+        placeholder="🔍 Search by Type, Input or Status">
+
+</div>
+
+                            <div class="table-responsive">
+
+                               <table class="table table-hover align-middle">
+
+    <thead class="table-primary">
+
+        <tr>
+
+            <th>#</th>
+            <th>Type</th>
+            <th>Input</th>
+            <th>Status</th>
+            <th>Date & Time</th>
+            <th>Action</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="historyTable">
+
+    </tbody>
+
+</table>
+
+                            </div>
+
+
+                            
+                        </div>
+
+                    </div>
+
+                   
+
+                    <footer class="mt-5">
+
+                        <div class="card border-0 shadow rounded-4">
+
+                            <div class="card-body text-center">
+
+                                <h5>
+
+                                    CA Validation Tool
+
+                                </h5>
+
+                                <p class="mb-1">
+
+                                    Validate PAN, TAN, Aadhaar, GSTIN,
+                                    Mobile Number & Email 
+                                    in one place.
+
+                                </p>
+
+                                <p class="text-muted">
+
+                                    Developed using HTML5, CSS3,
+                                    Bootstrap 5 & JavaScript
+
+                                </p>
+
+                                <hr>
+
+                                <small>
+
+                                    © 2026 All Rights Reserved | CA Validation Dashboard
+
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </footer>
+
+<div class="modal fade" id="qrModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content qr-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="bi bi-qr-code-scan"></i>
+                    Scan PAN / Aadhaar QR Code
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div id="qrReader"></div>
+                <p class="text-muted mt-3 mb-0">
+                    Hold the camera in front of the QR code, the value will be filled automatically.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+<div id="printReport">
+
+    <div class="report-watermark">CA VALIDATION</div>
+
+    <div class="rpt-header">
+        <div class="rpt-brand">
+            <div class="rpt-logo"><i class="bi bi-shield-check"></i></div>
+            <div>
+                <h1>CA VALIDATION TOOL</h1>
+                <p>Validate Indian Documents Easily</p>
+            </div>
+        </div>
+        <div class="rpt-heading">VALIDATION SUMMARY REPORT</div>
+    </div>
+
+    <div class="rpt-info">
+        <div class="rpt-info-item">
+            <i class="bi bi-building"></i>
+            <div>
+                <small>COMPANY</small>
+                <h6>CA Validation Tool</h6>
+            </div>
+        </div>
+        <div class="rpt-info-item">
+            <i class="bi bi-person-circle"></i>
+            <div>
+                <small>GENERATED BY</small>
+                <h6 id="printUser"></h6>
+            </div>
+        </div>
+        <div class="rpt-info-item">
+            <i class="bi bi-calendar3"></i>
+            <div>
+                <small>GENERATED ON</small>
+                <h6 id="printDate"></h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="rpt-section-title">
+        <i class="bi bi-bar-chart-line"></i> VALIDATION SUMMARY
+        <span id="printFilterLabel"></span>
+    </div>
+
+    <div class="rpt-summary">
+        <div class="rpt-sum-card blue">
+            <div class="rpt-sum-icon"><i class="bi bi-file-earmark-text"></i></div>
+            <div>
+                <small>TOTAL VALIDATIONS</small>
+                <h2 id="printTotal">0</h2>
+            </div>
+        </div>
+        <div class="rpt-sum-card green">
+            <div class="rpt-sum-icon"><i class="bi bi-check-lg"></i></div>
+            <div>
+                <small>VALID</small>
+                <h2 id="printValid">0</h2>
+            </div>
+        </div>
+        <div class="rpt-sum-card red">
+            <div class="rpt-sum-icon"><i class="bi bi-x-lg"></i></div>
+            <div>
+                <small>INVALID</small>
+                <h2 id="printInvalid">0</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="rpt-section-title">
+        <i class="bi bi-clock-history"></i> VALIDATION HISTORY
+    </div>
+
+    <table class="report-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Type</th>
+                <th>Input</th>
+                <th>Status</th>
+                <th>Date & Time</th>
+            </tr>
+        </thead>
+        <tbody id="printTableBody"></tbody>
+    </table>
+
+    <div class="rpt-footer">
+        <div class="rpt-foot-item">
+            <i class="bi bi-shield-check"></i>
+            <div>
+                <h6>CA Validation Tool</h6>
+                <p>One Platform to Validate PAN, TAN, Aadhaar, GSTIN, Mobile Number & Email.</p>
+            </div>
+        </div>
+        <div class="rpt-foot-item">
+            <i class="bi bi-printer"></i>
+            <div>
+                <h6>Report Generated By</h6>
+                <p>CA Validation Tool System</p>
+            </div>
+        </div>
+        <div class="rpt-foot-item">
+            <i class="bi bi-calendar3"></i>
+            <div>
+                <h6>Report Date</h6>
+                <p id="printDate2"></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+   
+
+    
+     <script src="js/gst.js"></script>
+
+<script src="js/tan.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
