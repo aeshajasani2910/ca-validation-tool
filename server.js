@@ -81,6 +81,11 @@ app.use((req, res, next) => {
 // Static files
 app.use(express.static(__dirname));
 
+
+app.get('/', (req, res) => {
+    res.redirect('/login.html');
+});
+
 app.use(express.json());
 
 app.use(express.json());  
