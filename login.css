@@ -35,15 +35,12 @@ body{
 
 
 .container{
-
     min-height:100vh;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
+    position:relative;
+    z-index:1;
 }
 
 .container::before{
@@ -67,6 +64,9 @@ body{
     top:10%;
 
     left:10%;
+
+        pointer-events:none;
+    z-index:0;
 
 }
 
@@ -92,7 +92,8 @@ body{
     bottom:10%;
 
     right:10%;
-
+    pointer-events:none;
+    z-index:0;
 }
 
 
@@ -246,6 +247,9 @@ body{
 
 
 .login-card{
+
+        position:relative;
+    z-index:2;
 
     width:500px;
 
